@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Schedule</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Merriweather&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(120deg, #fbc2eb, #a6c1ee);
+            color: #333;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            color: #6a0572;
+        }
+        table {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        th {
+            background-color: #6a0572;
+            color: #fff;
+        }
+        .filter-input {
+            border-radius: 20px;
+            padding: 10px;
+            border: 2px solid #6a0572;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Bus Schedule</h1>
+        <input type="text" class="form-control filter-input mt-3" id="filterInput" placeholder="Search routes or timings...">
+        <table class="table table-bordered table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>Bus Number</th>
+                    <th>Route</th>
+                    <th>Departure</th>
+                </tr>
+            </thead>
+            <tbody id="scheduleTable">
+                <tr>
+                    <td>101</td>
+                    <td>Station A - Station B</td>
+                    <td>9:00 AM</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Station C - Station D</td>
+                    <td>10:30 AM</td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>Station E - Station F</td>
+                    <td>11:15 AM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('filterInput').addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#scheduleTable tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
